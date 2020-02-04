@@ -5,6 +5,7 @@ import re
 import os
 import struct_bit
 import struct_all
+import struct_total
 def __get_input_dir_name(dir_name):
     dir_list = []
     try:
@@ -18,13 +19,12 @@ def __get_input_dir_name(dir_name):
         sys.exit()
         
 def dir_process(dir_name):
-    file_list = []
     dir_list = __get_input_dir_name(dir_name) 
     try:
         for sub_dir in dir_list[1:]:
             struct_bit.get_struct_bit(dir_name,sub_dir)
-            struct_all.get_struct_all(dir_name,sub_dir)              
-        return file_list
+            struct_all.get_struct_all(dir_name,sub_dir) 
+        struct_total.get_struct_total(dir_list)             
     except:
         print('file not exist or corupted')
         sys.exit()
