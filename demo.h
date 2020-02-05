@@ -9,7 +9,7 @@ typedef struct _AAAAA_16_BBBBB_LEVEL_Bits
     uint16 NULL5:2; 
     uint16 NULL6:2; 
     uint16 NULL7:2;         
-}__attribute__((packed)) AAAAA_16_BBBBB_LEVEL_Bits 
+}__attribute__((packed)) AAAAA_16_BBBBB_LEVEL_Bits; 
 typedef struct _AAAAA_8_BBBBB_Bits
 {
     uint8 NULL0:1; 

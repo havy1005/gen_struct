@@ -49,10 +49,10 @@ def __dir_list_process_struct(sub_dir_list,file_name):
             sub_dir = sub_dir.upper()    
             sub_dir = '    ' + sub_dir + '_MODULE_GLOBAL_T    ' + sub_dir + ';'
             sub_dir_all.append(sub_dir) 
-        str1 = '}__attribute__((packed)) AAAAA_MODULE_GLOBAL_T;'
+        str1 = '}__attribute__((packed)) AAAAA_MODULE_GLOBAL_T;\nextern AAAAA_MODULE_GLOBAL_T    AAAAA_ERR_TABLE;'
         str2 = file_name.upper()
         str3 = str1.replace('AAAAA',str2)
-        sub_dir_all.append(str3)
+        sub_dir_all.append(str3)      
         return sub_dir_all
     except:
         print('file not exist or corupted')
