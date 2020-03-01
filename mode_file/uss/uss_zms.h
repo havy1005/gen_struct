@@ -1,7 +1,8 @@
 module"uss"   
 submodule"channel[12]"
 SHGND 
-OPENSHPWR
+SHPWR
+OPEN
 CHFAIL
-NODEV
+SELFCHECK
 CONFIG

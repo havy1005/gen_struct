@@ -117,19 +117,27 @@ def __wirte_list_to_file(list_out,file_name,sub_dir):
             file_name = file_name.replace('.','_')
             file_name1 = '#ifndef ' + file_name.upper()+'\n'
             file_name2 = '#define ' + file_name.upper()+'\n'
+            common_header = '#include \"common_module_struct_interface.h\"\n'           			
             file_name3 = '#include \"' + file_name.lower()+'\"\n'
             file_name3 = file_name3.replace('all_h','bit.h')
             file.write(file_name1)
             file.write(file_name2)
+            #file.write(common_header)
             file.write(file_name3)
             sub_dir = sub_dir.upper()
-            str1 = 'typedef volatile struct _AAAAA_MODULE_GLOBAL_T\n{\n'
+            str1 = 'typedef volatile struct _AAAAA_MODULE_SUBM_T\n{\n'
             str2 = str1.replace('AAAAA',sub_dir)
             file.write(str2)
             file.write('\n'.join(list_out)) 
-            str1 = '\n}__attribute__((packed)) AAAAA_MODULE_GLOBAL_T;\n#endif\n'
-            str2 = str1.replace('AAAAA',sub_dir)
-            file.write(str2)
+            str1 = '\n}__attribute__((packed)) AAAAA_MODULE_SUBM_T;\n'
+            str2 = 'typedef volatile struct _AAAAA_MODULE_GLOBAL_T\n{\n'
+            str3 = '    HANDLE_MODULE_E    HANDLE;\n    SYNC_TIMESTAMP_T    TS;\n'
+            str4 = '    AAAAA_MODULE_SUBM_T    AAAAA;\n}__attribute__((packed)) AAAAA_MODULE_GLOBAL_T;\n'
+            str5 = '#endif\n'
+            #str6 = str1+str2+str3+str4+str5  
+            str6 = str1+str5            
+            str6 = str6.replace('AAAAA',sub_dir)
+            file.write(str6)
     except:
         print('file not exist or corupted')
         sys.exit()
